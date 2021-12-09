@@ -55,7 +55,15 @@ For general questions visit the [Discussions Area](https://github.com/coinfoundr
 
 Miningcore currently requires PostgreSQL 10 or higher.
 
+```
+sudo apt update
+sudo apt install postgresql postgresql-contrib
+```
+
 Create the database:
+```
+sudo -i -u postgres
+```
 
 ```console
 $ createuser miningcore
@@ -69,6 +77,7 @@ Inside `psql` execute:
 alter user miningcore with encrypted password 'some-secure-password';
 grant all privileges on database miningcore to miningcore;
 ```
+And Exit: \q
 
 Import the database schema:
 
@@ -76,6 +85,11 @@ Import the database schema:
 $ wget https://raw.githubusercontent.com/coinfoundry/miningcore/master/src/Miningcore/Persistence/Postgres/Scripts/createdb.sql
 $ psql -d miningcore -U miningcore -f createdb.sql
 ```
+if the psql command not work try :
+psql -U miningcore -h 127.0.0.1 miningcore -f createdb.sql
+
+Them introduce your password
+Password for user miningcore:
 
 ### Advanced setup
 
